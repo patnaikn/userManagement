@@ -29,7 +29,7 @@ export class AuthenticateService {
     this.loadToken();
     headers.append('Authorization',this.authToken);
     headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/users/authenticate',{headers: headers})
+    return this.http.get('http://localhost:3000/users/profile',{headers: headers})
       .map(res => res.json());
   }
 

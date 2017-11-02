@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
   user: Object;
 
   constructor(private authService: AuthenticateService,
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit {
       err => {
       console.log(err);
       return false;
-      })
+      });
   }
 
 }
