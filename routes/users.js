@@ -32,16 +32,14 @@ usersRouter.post('/authenticate',(req,res,next) => {
     const password = req.body.password;
 
     User.getUserByUserName(username, (err,user) =>{
-        if(err){
-            throw err;
-        }
+        if(err) throw err;
+
         if(!user){
             res.json({success: false, msg: 'User not found'});
         }
         User.comparePassword(password, user.password, (err, isMatch) => {
-            if(err){
-                throw err;
-            }
+            if(err) throw err;
+
             if(isMatch){
                 const token = jwt.sign({encTokenData: user}, config.secret, {
                     expiresIn: 604800 // 1 week
@@ -66,7 +64,6 @@ usersRouter.post('/authenticate',(req,res,next) => {
 
 //Profile
 usersRouter.get('/profile',passport.authenticate('jwt',{session: false}),(req,res,next) => {
-
     res.json({user: req.user});
 });
 
