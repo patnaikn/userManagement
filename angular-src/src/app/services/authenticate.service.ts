@@ -48,7 +48,7 @@ export class AuthenticateService {
   }
 
   loggedIn(){
-    return tokenNotExpired();
+    return tokenNotExpired(null,localStorage.getItem('id_token'));
   }
 
   logout(){
